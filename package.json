@@ -1,0 +1,14 @@
+{
+  "name": "item-tracker",
+  "version": "1.0.0",
+  "main": "'",
+  "repository": "https://github.com/joshbalfour/item-tracker.git",
+  "license": "MIT",
+  "packageManager": "yarn@3.3.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
