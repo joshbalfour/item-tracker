@@ -1,7 +1,7 @@
-import {} from 'type-graphql'
+import { ObjectType, Field, ID, InputType} from 'type-graphql'
 
 @ObjectType()
-class Recipe {
+export class Recipe {
   @Field(type => ID)
   id: string;
 
@@ -16,4 +16,13 @@ class Recipe {
 
   @Field(type => [String])
   ingredients: string[];
+}
+
+@InputType()
+export class RecipeInput implements Partial<Recipe> {
+  @Field()
+  title: string;
+
+  @Field({ nullable: true })
+  description?: string;
 }
