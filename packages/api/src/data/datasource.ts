@@ -4,7 +4,7 @@ import { Item } from '../entity/item'
 
 dotenv.config()
 
-const ItemDataSource = new DataSource({
+export const ItemDataSource = new DataSource({
   type: 'mysql',
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
@@ -13,6 +13,4 @@ const ItemDataSource = new DataSource({
   entities: [Item]
 })
 
-export let ItemRepo: Repository<Item> | undefined
-
-ItemDataSource.initialize().then(async () => { await ItemDataSource.synchronize(); ItemRepo = ItemDataSource.getRepository(Item) }).catch(() => { console.error('failed to connect to db') })
+export const ItemRepo = ItemDataSource.getRepository(Item)
