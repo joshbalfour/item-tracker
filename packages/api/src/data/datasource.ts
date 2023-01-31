@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv'
-import { DataSource, Repository } from 'typeorm'
+import { DataSource } from 'typeorm'
 import { Item } from '../entity/item'
 
 dotenv.config()
