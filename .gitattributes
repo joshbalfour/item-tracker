@@ -4,4 +4,3 @@
 /.pnp.*                 binary linguist-generated
 # Hide .yarn from GitHub's language detection
 /.yarn/**               linguist-vendored
-.yarn/cache filter=lfs diff=lfs merge=lfs -text
