@@ -24,4 +24,4 @@ const start = async (): Promise<void> => {
   console.log(`🚀  Server ready at: ${url}`)
 }
 
-start().then(() => { console.log('done') }).catch(() => { console.error('failed :(') })
+start().then(() => { console.log('done') }).catch((e) => { console.error('failed :(', e) })
