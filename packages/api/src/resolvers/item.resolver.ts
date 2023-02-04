@@ -12,17 +12,25 @@ export class ItemResolver {
 
   @Query(returns => [Item])
   async items (): Promise<Item[]> {
-    return await ItemRepo.find({ relations: { parent: true }, where: { parent: IsNull() } })
+    return await ItemRepo.find({ relations: { parent: true, children: true }, where: { parent: IsNull() } })
   }
 
   @Mutation(returns => Item)
   async addItem (@Arg('item') item: ItemInput): Promise<Item> {
+    if ((await ItemRepo.findOne({ where: { id: item.id } })) != null) {
+      throw new Error('Item already exists')
+    }
     const itemObj = new Item()
-    if (!(item.parent_id === undefined || item.parent_id === '')) {
-      itemObj.parent = await this.item(item.parent_id)
+    if (item.parent_id !== undefined && item.parent_id !== '') {
+      const parent = await ItemRepo.findOne({ where: { id: item.parent_id } })
+      if (parent == null) {
+        throw new Error('Could not find parent item')
+      }
+      itemObj.parent = parent
     }
     itemObj.description = item.description ?? ''
     itemObj.name = item.name
+    itemObj.id = item.id
     return await ItemRepo.save(itemObj)
   }
 
