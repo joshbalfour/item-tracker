@@ -1,11 +1,11 @@
 import { Field, ID, InputType, ObjectType } from 'type-graphql'
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm'
+import { Entity, Column, OneToMany, ManyToOne, PrimaryColumn } from 'typeorm'
 
 @ObjectType()
 @Entity()
 export class Item {
-  @PrimaryGeneratedColumn('uuid')
   @Field(type => ID)
+  @PrimaryColumn()
     id: string
 
   @Field(type => [Item], { nullable: true })
@@ -31,6 +31,9 @@ export class Item {
 
 @InputType()
 export class ItemInput {
+  @Field()
+    id: string
+
   @Field({ nullable: true })
     parent_id?: string
 
