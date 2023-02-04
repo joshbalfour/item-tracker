@@ -3,6 +3,8 @@ import { Item, ItemInput, ItemUpdateInput } from '../entity/item'
 import { ItemRepo } from '../data/datasource'
 import { IsNull } from 'typeorm'
 
+import { getImageUploadUrl } from '../utils/get-signed-url'
+
 @Resolver(of => Item)
 export class ItemResolver {
   @Query(returns => Item)
@@ -45,5 +47,10 @@ export class ItemResolver {
     const curObj = await this.item(item.id)
     Object.entries(item).filter((d) => d[1]).forEach(d => { curObj[d[0]] = d[1] })
     return await ItemRepo.save(curObj)
+  }
+
+  @Mutation(returns => String)
+  async getItemImageUploadUrl (@Arg('id') id: string): Promise<string> {
+    return await getImageUploadUrl(id)
   }
 }
