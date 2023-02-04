@@ -4,11 +4,18 @@
   "main": "'",
   "repository": "https://github.com/joshbalfour/item-tracker.git",
   "license": "MIT",
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@4.0.0-rc.37",
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "test": "yarn workspaces foreach run test",
+    "api": "yarn workspace @item-tracker/api"
+  },
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "@types/node": "^18.11.18",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
+    "typescript": "*"
   }
 }
