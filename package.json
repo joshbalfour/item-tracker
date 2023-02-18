@@ -14,9 +14,9 @@
     "frontend": "yarn workspace @item-tracker/frontend"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.13.0",
     "eslint": "^8.33.0",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.4",
     "typescript": "*"
   }
 }
