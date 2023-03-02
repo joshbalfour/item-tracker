@@ -4,7 +4,8 @@ WORKDIR /build
 
 COPY . ./
 
-RUN corepack enable && corepack prepare pnpm@latest --activate && \
+RUN mv pnpm-workspace.api.yaml pnpm-workspace.yaml && \
+    corepack enable && corepack prepare pnpm@latest --activate && \
     pnpm i --frozen-lockfile && \
     pnpm api build && \
     mkdir /app && \
