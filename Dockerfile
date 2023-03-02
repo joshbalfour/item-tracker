@@ -1,0 +1,17 @@
+FROM node:19-alpine as build
+
+WORKDIR /build
+
+COPY . ./
+
+RUN corepack enable && corepack prepare pnpm@latest --activate && \
+    pnpm i --frozen-lockfile && \
+    pnpm api build && \
+    mkdir /app && \
+    cp packages/api/dist/index.js /app && \
+    rm -rf /build
+
+FROM node:19-alpine as RUN
+WORKDIR /app
+COPY --from=build /app /app
+CMD ["node", "index.js"]
