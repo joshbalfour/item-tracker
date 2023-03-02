@@ -1,19 +1,28 @@
 import { ApolloProvider } from '@apollo/client'
-import { ThemeProvider } from '@fluentui/react'
-import { initializeIcons } from '@fluentui/react/lib/Icons'
 import React from 'react'
+import { FluentProvider, makeStyles, webDarkTheme } from '@fluentui/react-components'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { client } from './utils/apollo'
+import './main.css'
 
-initializeIcons()
+const useStyles = makeStyles({
+  root: { alignItems: 'stretch', display: 'flex', flexBasis: '100%'}
+})
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+const Fuck = () => {
+  const classes = useStyles()
+  return (
+    <React.StrictMode>
     <ApolloProvider client={client}>
-      <ThemeProvider>
+    <FluentProvider theme={webDarkTheme} className={classes.root}>
         <App />
-      </ThemeProvider>
+      </FluentProvider>
     </ApolloProvider>
   </React.StrictMode>
-)
+  )
+}
+
+
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<Fuck/>)

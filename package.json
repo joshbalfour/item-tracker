@@ -4,14 +4,10 @@
   "main": "'",
   "repository": "https://github.com/joshbalfour/item-tracker.git",
   "license": "MIT",
-  "packageManager": "yarn@3.4.1",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "test": "yarn workspaces foreach run test",
-    "api": "yarn workspace @item-tracker/api",
-    "frontend": "yarn workspace @item-tracker/frontend"
+    "test": "pnpm run --filter '*' test",
+    "api": "pnpm run --filter '@item-tracker/api'",
+    "frontend": "pnpm run --filter '@item-tracker/frontend'"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",

@@ -1,25 +1,19 @@
 import { useQuery } from '@apollo/client'
-import { DetailsRow, GroupedList, type IColumn } from '@fluentui/react'
+
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellLayout,
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+  useArrowNavigationGroup
+} from '@fluentui/react-components'
 import { GET_ITEMS } from '../utils/apollo'
-
-const columns: IColumn[] = [
-  {
-    key: 'name',
-    name: 'name',
-    minWidth: 500,
-    maxWidth: 500,
-    onRender: (item) => <span>{item.name}</span>
-  }
-]
-
-const renderCell = (nestingDepth?: number,
-  item?,
-  itemIndex?: number): React.ReactNode => {
-  return <DetailsRow columns={columns}
-    groupNestingDepth={nestingDepth}
-    item={item}
-    itemIndex={itemIndex!}/>
-}
 
 export default (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_ITEMS)
@@ -28,6 +22,25 @@ export default (): JSX.Element => {
   console.log(data)
 
   return (
-        <GroupedList items={data.items} onRenderCell={renderCell}/>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell key={'name'}>
+            Name
+          </TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          data.items.map(item => (
+            <TableRow key={item.id}>
+              <TableCell>
+                {item.name}
+              </TableCell>
+            </TableRow>
+          ))
+        }
+      </TableBody>
+    </Table>
   )
 }

@@ -1,10 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import QrScanner from 'qr-scanner'
-import { Dropdown } from '@fluentui/react'
+import { Dropdown, makeStyles, Option } from '@fluentui/react-components'
+import {Card,CardHeader,CardFooter,CardPreview} from '@fluentui/react-components/unstable'
+
+
+const useStyles = makeStyles({
+  root: { alignItems: 'stretch', display: 'flex'},
+  basic: { display: 'block'}
+})
+
+
 let qrScanner: QrScanner | undefined
 export default (): JSX.Element => {
+  const classes = useStyles()
   const ref = useRef<HTMLVideoElement>(null)
   const [curCam, setCam] = useState<string>()
+  const [hasLoaded, setLoaded] = useState<boolean>(false)
   const [availCam, setAvailCam] = useState<QrScanner.Camera[]>()
 
   if (availCam == null) {
@@ -20,16 +31,23 @@ export default (): JSX.Element => {
     if ((ref.current != null) && (qrScanner == null)) { qrScanner = new QrScanner(ref.current, (result: QrScanner.ScanResult) => { alert(result.data) }, { highlightScanRegion: true, preferredCamera: curCam }); void qrScanner.start() }
     return () => {
       // if ((ref.current != null) && (qrScanner != null)) {
-      console.log('tearing down')
-      qrScanner?.destroy()
-      qrScanner = undefined
+      console.log(hasLoaded)
+      if(hasLoaded){
+        console.log('tearing down')
+        qrScanner?.destroy()
+        qrScanner = undefined
+      }
       // }
     }
-  }, [ref.current])
+  }, [ref.current, hasLoaded])
   return (
-    <>
-      {(availCam != null) ? <Dropdown options={availCam.map(c => { return { key: c.id, text: c.label } })} onChange={(_, a) => { setCam(a?.key.toString()) }} defaultSelectedKey={curCam ?? availCam[0].id}/> : <p>Loading Cameras</p>}
-      <video style={{ flex: 1 }} ref={ref}></video>
-    </>
+    <Card className={classes.basic}>
+      <CardPreview>
+        <video onPlay={() => { console.log('lol'); setLoaded(true)}} style={{ flex: 1 }} ref={ref}></video>
+      </CardPreview>
+      <CardFooter>
+        {(availCam != null) ? <Dropdown onOptionSelect={(_, a) => { console.log(a); setCam(a?.optionValue) }} defaultValue={availCam[0].label} defaultSelectedOptions={[curCam ?? availCam[0].id]}> {availCam.map(c => (<Option key={c.id} value={c.id}>{c.label}</Option>) )}  </Dropdown> : <p>Loading Cameras</p>}
+      </CardFooter>
+    </Card>
   )
 }

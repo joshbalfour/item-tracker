@@ -1,18 +1,16 @@
 {
   "search.exclude": {
     "**/.yarn": true,
-    "**/.pnp.*": true
+    "**/.pnp.*": true,
+    "**/node_modules": true
   },
-  "npm.packageManager": "yarn",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "npm.packageManager": "pnpm",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
-  "eslint.packageManager": "yarn",
-  "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "eslint.packageManager": "pnpm",
   "deepscan.enable": true
 }
