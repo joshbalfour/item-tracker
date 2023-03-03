@@ -7,13 +7,11 @@ importers:
       '@types/node': ^18.13.0
       eslint: ^8.33.0
       prettier: ^2.8.4
-      terser: ^5.16.4
       typescript: '*'
     devDependencies:
       '@types/node': 18.14.4
       eslint: 8.35.0
       prettier: 2.8.4
-      terser: 5.16.5
       typescript: 4.9.5
 
   packages/api:
@@ -42,7 +40,6 @@ importers:
       mysql2: ^3.1.2
       prettier: ^2.8.4
       reflect-metadata: ^0.1.13
-      terser: ^5.16.5
       ts-jest: ^29.0.5
       tsup: ^6.6.3
       tsup-node: ^0.1.0
@@ -77,7 +74,6 @@ importers:
       eslint-plugin-promise: 6.1.1_eslint@8.35.0
       jest: 29.4.3
       prettier: 2.8.4
-      terser: 5.16.5
       ts-jest: 29.0.5_ogokshqypuxpcka37hqvtdeyqm
       tsup: 6.6.3_mnhotfm6767yolbgsywqewmoym
       tsup-node: 0.1.0_typescript@5.0.0-beta
@@ -4364,13 +4360,6 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: true
 
-  /@jridgewell/source-map/0.3.2:
-    resolution: {integrity: sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw==}
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.2
-      '@jridgewell/trace-mapping': 0.3.17
-    dev: true
-
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
@@ -5546,10 +5535,6 @@ packages:
     dependencies:
       delayed-stream: 1.0.0
     dev: false
-
-  /commander/2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: true
 
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -8500,13 +8485,6 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /source-map-support/0.5.21:
-    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-    dev: true
-
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
@@ -8685,17 +8663,6 @@ packages:
       keyborg: 2.0.0
       tslib: 2.5.0
     dev: false
-
-  /terser/5.16.5:
-    resolution: {integrity: sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      '@jridgewell/source-map': 0.3.2
-      acorn: 8.8.2
-      commander: 2.20.3
-      source-map-support: 0.5.21
-    dev: true
 
   /test-exclude/6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}

@@ -9,5 +9,5 @@ export default defineConfig({
   clean: true,
   noExternal: Object.keys(packages),
   treeshake: true,
-  minify: 'terser',
+  minify: true
 })

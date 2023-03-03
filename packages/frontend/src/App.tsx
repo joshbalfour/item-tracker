@@ -5,8 +5,8 @@ import Camera from './components/Camera'
 import Search from './components/Search'
 
 const useStyles = makeStyles({
-  root: { alignItems: 'stretch', display: 'flex'},
-  basic: { display: 'block'}
+  root: { alignItems: 'stretch', display: 'flex' },
+  basic: { display: 'block' }
 })
 
 const App = (): React.ReactElement => {
