@@ -9,7 +9,7 @@ RUN mv pnpm-workspace.frontend.yaml pnpm-workspace.yaml && \
     pnpm i --frozen-lockfile && \
     pnpm frontend build && \
     mkdir /app && \
-    cp packages/frontend/dist/* /app && \
+    cp -ar packages/frontend/dist/* /app && \
     rm -rf /build
 
 FROM nginx:stable-alpine as RUN
