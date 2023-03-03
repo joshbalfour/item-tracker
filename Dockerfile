@@ -1,4 +1,4 @@
-FROM node:19-alpine as build
+FROM node:19-alpine AS build
 
 WORKDIR /build
 
@@ -12,7 +12,7 @@ RUN mv pnpm-workspace.api.yaml pnpm-workspace.yaml && \
     cp packages/api/dist/index.js /app && \
     rm -rf /build
 
-FROM node:19-alpine as RUN
+FROM node:19-alpine AS RUN
 WORKDIR /app
 COPY --from=build /app /app
 CMD ["node", "index.js"]

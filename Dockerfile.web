@@ -1,4 +1,4 @@
-FROM node:19-alpine as build
+FROM node:19-alpine AS build
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN mv pnpm-workspace.frontend.yaml pnpm-workspace.yaml && \
     cp -ar packages/frontend/dist/* /app && \
     rm -rf /build
 
-FROM nginx:stable-alpine as RUN
+FROM nginx:stable-alpine AS RUN
 WORKDIR /app
 COPY --from=build /app /usr/share/nginx/html
 COPY deploy/ci/nginx-server.conf /etc/nginx/conf.d/server.conf

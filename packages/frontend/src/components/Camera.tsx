@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import QrScanner from 'qr-scanner'
 import { Dropdown, makeStyles, Option } from '@fluentui/react-components'
-import {Card,CardHeader,CardFooter,CardPreview} from '@fluentui/react-components/unstable'
-
+import { Card, CardFooter, CardPreview } from '@fluentui/react-components/unstable'
 
 const useStyles = makeStyles({
-  root: { alignItems: 'stretch', display: 'flex'},
-  basic: { display: 'block'}
+  root: { alignItems: 'stretch', display: 'flex' },
+  basic: { display: 'block' }
 })
-
 
 let qrScanner: QrScanner | undefined
 export default (): JSX.Element => {
@@ -32,7 +30,7 @@ export default (): JSX.Element => {
     return () => {
       // if ((ref.current != null) && (qrScanner != null)) {
       console.log(hasLoaded)
-      if(hasLoaded){
+      if (hasLoaded) {
         console.log('tearing down')
         qrScanner?.destroy()
         qrScanner = undefined
@@ -43,10 +41,10 @@ export default (): JSX.Element => {
   return (
     <Card className={classes.basic}>
       <CardPreview>
-        <video onPlay={() => { console.log('lol'); setLoaded(true)}} style={{ flex: 1 }} ref={ref}></video>
+        <video onPlay={() => { console.log('lol'); setLoaded(true) }} style={{ flex: 1 }} ref={ref}></video>
       </CardPreview>
       <CardFooter>
-        {(availCam != null) ? <Dropdown onOptionSelect={(_, a) => { console.log(a); setCam(a?.optionValue) }} defaultValue={availCam[0].label} defaultSelectedOptions={[curCam ?? availCam[0].id]}> {availCam.map(c => (<Option key={c.id} value={c.id}>{c.label}</Option>) )}  </Dropdown> : <p>Loading Cameras</p>}
+        {(availCam != null) ? <Dropdown onOptionSelect={(_, a) => { console.log(a); setCam(a?.optionValue) }} defaultValue={availCam[0].label} defaultSelectedOptions={[curCam ?? availCam[0].id]}> {availCam.map(c => (<Option key={c.id} value={c.id}>{c.label}</Option>))}  </Dropdown> : <p>Loading Cameras</p>}
       </CardFooter>
     </Card>
   )

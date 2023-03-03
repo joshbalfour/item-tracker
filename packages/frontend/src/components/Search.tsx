@@ -6,14 +6,9 @@ import {
   TableRow,
   Table,
   TableHeader,
-  TableHeaderCell,
-  TableCellLayout,
-  PresenceBadgeStatus,
-  Avatar,
-  Button,
-  useArrowNavigationGroup
+  TableHeaderCell
 } from '@fluentui/react-components'
-import { GET_ITEMS, ParentItem } from '../utils/apollo'
+import { GET_ITEMS, type ParentItem } from '../utils/apollo'
 
 export default (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_ITEMS)
