@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react(), splitVendorChunkPlugin()],
   build: {
     minify: 'terser',
+    chunkSizeWarningLimit: 750,
   }
 })
