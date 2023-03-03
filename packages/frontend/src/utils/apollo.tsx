@@ -19,3 +19,13 @@ query Items {
   }
 }
 `
+
+export interface ParentItem extends BaseItem {
+  children: BaseItem[]
+}
+
+export interface BaseItem {
+  id: string
+  name: string
+  description: string
+}

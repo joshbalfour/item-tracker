@@ -13,7 +13,7 @@ import {
   Button,
   useArrowNavigationGroup
 } from '@fluentui/react-components'
-import { GET_ITEMS } from '../utils/apollo'
+import { GET_ITEMS, ParentItem } from '../utils/apollo'
 
 export default (): JSX.Element => {
   const { loading, error, data } = useQuery(GET_ITEMS)
@@ -32,7 +32,7 @@ export default (): JSX.Element => {
       </TableHeader>
       <TableBody>
         {
-          data.items.map(item => (
+          data.items.map((item: ParentItem) => (
             <TableRow key={item.id}>
               <TableCell>
                 {item.name}
