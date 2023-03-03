@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: item-tracker-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: item-tracker-api
+  template:
+    metadata:
+      labels:
+        app: item-tracker-api
+    spec:
+      containers:
+      - image: git.home.fa.gl/boi/item-tracker-api:latest
+        name: item-tracker-api
+        envFrom:
+          - configMapRef:
+              name: item-tracker-cm

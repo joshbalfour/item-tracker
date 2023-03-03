@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: item-tracker-frontend
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: item-tracker-frontend

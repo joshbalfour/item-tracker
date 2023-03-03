@@ -4,6 +4,8 @@ WORKDIR /build
 
 COPY . ./
 
+ENV VITE_API_URL=/api
+
 RUN mv pnpm-workspace.frontend.yaml pnpm-workspace.yaml && \
     corepack enable && corepack prepare pnpm@latest --activate && \
     pnpm i --frozen-lockfile && \
