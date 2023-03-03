@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: item-tracker-frontend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: item-tracker-frontend
+  template:
+    metadata:
+      labels:
+        app: item-tracker-frontend
+    spec:
+      containers:
+      - image: git.home.fa.gl/boi/item-tracker-frontend:latest
+        name: item-tracker-frontend
+        ports:
+        - containerPort: 80

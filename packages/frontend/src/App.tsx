@@ -1,33 +1,34 @@
+import { type SelectTabData, type SelectTabEvent, Tab, TabList, type TabValue, makeStyles } from '@fluentui/react-components'
+import { ScanCamera24Regular, DatabaseSearch24Regular } from '@fluentui/react-icons'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Camera from './components/Camera'
+import Search from './components/Search'
 
-function App() {
-  const [count, setCount] = useState(0)
+const useStyles = makeStyles({
+  root: { alignItems: 'stretch', display: 'flex' },
+  basic: { display: 'block' }
+})
 
+const App = (): React.ReactElement => {
+  const classes = useStyles()
+  const [selectedValue, setSelectedValue] = useState<TabValue>(
+    'camera'
+  )
+
+  const onTabSelect = (_: SelectTabEvent, data: SelectTabData): void => {
+    setSelectedValue(data.value)
+  }
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+  <div className={classes.root}>
+  <TabList vertical selectedValue={selectedValue} onTabSelect={onTabSelect}>
+    <Tab value="camera" icon={<ScanCamera24Regular/>}>Scan</Tab>
+    <Tab value="search" icon={<DatabaseSearch24Regular/>}>Search</Tab>
+  </TabList>
+  <>
+    {selectedValue === 'camera' && <Camera/>}
+    {selectedValue === 'search' && <Search/>}
+  </>
+  </div>
   )
 }
 

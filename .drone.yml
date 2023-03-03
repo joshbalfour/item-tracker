@@ -1,0 +1,27 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+  - name: Build API
+    image: plugins/kaniko
+    depends_on: ["clone"]
+    settings:
+      username: boi
+      password:
+        from_secret: docker_pat
+      registry: git.home.fa.gl
+      repo: git.home.fa.gl/boi/item-tracker-api
+      tags: latest
+      dockerfile: Dockerfile
+  - name: Build Frontend
+    image: plugins/kaniko
+    depends_on: ["clone"]
+    settings:
+      username: boi
+      password:
+        from_secret: docker_pat
+      registry: git.home.fa.gl
+      repo: git.home.fa.gl/boi/item-tracker-frontend
+      tags: latest
+      dockerfile: Dockerfile.web

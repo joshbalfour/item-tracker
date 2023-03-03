@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: item-tracker-cm
+data:
+  DB_HOST: 10.0.0.36:5234
+  DB_USER: item-tracker
+  DB_DATABASE: item-tracker
+  DB_PASSWORD: ""
