@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import QrScanner from 'qr-scanner'
-import { Dropdown, makeStyles, Option } from '@fluentui/react-components'
-import { Card, CardFooter, CardPreview } from '@fluentui/react-components/unstable'
+import { Dropdown, makeStyles, Option, Card, CardFooter, CardPreview } from '@fluentui/react-components'
 
 const useStyles = makeStyles({
   root: { alignItems: 'stretch', display: 'flex' },
