@@ -7,10 +7,10 @@ import { client } from './utils/apollo'
 import './main.css'
 
 const useStyles = makeStyles({
-  root: { alignItems: 'stretch', display: 'flex', flexBasis: '100%'}
+  root: { alignItems: 'stretch', display: 'flex', flexBasis: '100%' }
 })
 
-const Fuck = () => {
+const Main = (): JSX.Element => {
   const classes = useStyles()
   return (
     <React.StrictMode>
@@ -23,6 +23,4 @@ const Fuck = () => {
   )
 }
 
-
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<Fuck/>)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<Main/>)
