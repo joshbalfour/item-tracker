@@ -16,6 +16,8 @@ spec:
       containers:
       - image: git.home.fa.gl/boi/item-tracker-api:latest
         name: item-tracker-api
+        ports:
+        - containerPort: 4000
         envFrom:
           - configMapRef:
               name: item-tracker-cm
