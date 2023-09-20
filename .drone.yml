@@ -10,7 +10,7 @@ steps:
       API_KEY:
         from_secret: dependency-track
     commands:
-      - "pnpm dlx pnpm dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-version $(git rev-parse --abbrev-ref HEAD)"
+      - pnpm dlx pnpm dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-version "$(git rev-parse --abbrev-ref HEAD)"
   - name: Build API
     image: plugins/kaniko
     depends_on: ["clone"]
