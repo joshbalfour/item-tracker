@@ -11,3 +11,5 @@ dist
 .env
 
 node_modules
+
+bom.json
