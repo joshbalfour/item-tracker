@@ -11,7 +11,7 @@ steps:
         from_secret: dependency-track
     commands:
       - corepack enable && corepack prepare pnpm@latest --activate
-      - pnpm dlx pnpm dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-version "$(git rev-parse --abbrev-ref HEAD)"
+      - pnpm dlx pnpm dlx @cyclonedx/cdxgen --api-key $API_KEY --server-url https://api-sbom.home.fa.gl --project-version "$(git branch --show-current)"
   - name: Build API
     image: plugins/kaniko
     depends_on: ["clone"]
